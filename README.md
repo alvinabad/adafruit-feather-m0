@@ -1,4 +1,4 @@
-# ESP32 Microcontroller Applications
+# Adafruit Feather M0 WiFi Microcontroller Applications
 
 ## Installation
 
@@ -90,3 +90,7 @@ upload_port = /dev/cu.usbmodem*
 ```shell
 monitor_speed = 115200
 ```
+
+## References
+
+- https://www.adafruit.com/product/3010
