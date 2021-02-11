@@ -1,0 +1,18 @@
+# This file is used to gain permission for the WICED Feather module
+# # Copy this file to /etc/udev/rules.d/
+#
+ACTION!="add|change", GOTO="adafruit_rules_end"
+SUBSYSTEM!="usb|tty|hidraw", GOTO="adafruit_rules_end"
+#
+# # Please keep this list sorted by VID:PID
+#
+# # WICED Feather in DFU mode
+ATTRS{idVendor}=="239a", ATTRS{idProduct}=="0008", MODE="664", GROUP="plugdev"
+#
+# # WICED Feather in Application mode
+ATTRS{idVendor}=="239a", ATTRS{idProduct}=="0010", MODE="664", GROUP="plugdev"
+ATTRS{idVendor}=="239a", ATTRS{idProduct}=="8010", MODE="664", GROUP="plugdev"
+#
+LABEL="adafruit_rules_end"
+
+PID 0008 = DFU Mode, 0010 = Application Mode/CDC, 8010 = Application Mode/CDC + USB Mass Storage

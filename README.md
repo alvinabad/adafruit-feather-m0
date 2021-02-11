@@ -32,6 +32,13 @@ Options:
 apt-get install python3-venv
 ```
 
+Install `99-platformio-udev.rules`.
+See : https://docs.platformio.org/page/faq.html#platformio-udev-rules
+
+```shell
+sudo service udev restart
+```
+
 #### Grant user access to USB device
 
 ```shell
@@ -54,6 +61,12 @@ python3 get-platformio.py
 
 export PATH=$PATH:~/.platformio/penv/bin
 ```
+
+## Create and Initialize a New Project
+
+mkdir newappname
+cd newappname
+pio project init --board adafruit_feather_m0
 
 ## Build an Application
 
@@ -94,3 +107,5 @@ monitor_speed = 115200
 ## References
 
 - https://www.adafruit.com/product/3010
+- https://docs.platformio.org/
+- https://docs.platformio.org/en/latest/tutorials/espressif32/arduino_debugging_unit_testing.html
