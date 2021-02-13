@@ -17,24 +17,7 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-void write_text(char *msg) {
-    display.clearDisplay();
-
-    display.setTextSize(2);
-    display.setTextColor(SSD1306_WHITE);
-    display.setCursor(0,0);
-
-    display.println(F(msg));
-    display.display();
-
-    delay(2500);
-}
-
-void display_message() {
-    // 10 characters max per line. 2 lines max. 
-    write_text("Hello,    World!");
-    write_text("...");
-}
+void write_to_display(char *);
 
 void setup() {
     Serial.begin(115200);
@@ -56,5 +39,25 @@ void setup() {
 }
 
 void loop() {
-    display_message();
+    // 20 characters max
+    write_to_display("Hello,    World!   ");
+    write_to_display("123456788901234567890ABCDEF");
+}
+
+void write_to_display(char *msg) {
+    display.clearDisplay();
+
+    display.setTextSize(2);
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0,0);
+
+    //display.println(F(msg));
+    for (int i=0; i<strlen(msg); i++) {
+        display.printf("%c", F(msg[i]));
+        display.display();
+        delay(200);
+    }
+
+    // display for 2.5s minimum until the next one
+    delay(2500);
 }
