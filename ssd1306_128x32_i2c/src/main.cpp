@@ -41,7 +41,9 @@ void setup() {
 void loop() {
     // 20 characters max
     write_to_display("Hello,    World!   ");
-    write_to_display("123456788901234567890ABCDEF");
+
+    // ABCDEF won't be displayed
+    write_to_display("12345678901234567890ABCDEF");
 }
 
 void write_to_display(char *msg) {
