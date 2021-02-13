@@ -1,0 +1,2 @@
+# Specify ID of board. To list boards, run: pio boards
+adafruit_feather_m0
