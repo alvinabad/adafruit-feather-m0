@@ -23,8 +23,11 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
+    Serial.println("LED HIGH");
     digitalWrite(LED_BUILTIN, HIGH);
     delay(100);
+
+    Serial.println("LED LOW");
     digitalWrite(LED_BUILTIN, LOW);
     delay(100);
 }

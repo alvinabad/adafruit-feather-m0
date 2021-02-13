@@ -12,6 +12,10 @@ void listNetworks();
 void printMacAddress(byte[]);
 void printEncryptionType(int);
 
+#ifndef LED_BUILTIN
+    #define LED_BUILTIN 13
+#endif
+
 void setup() {
     //Configure pins for Adafruit ATWINC1500 Feather
     WiFi.setPins(8,7,4,2);
@@ -21,6 +25,11 @@ void setup() {
 
     //while (!Serial); // wait for serial port to connect. Needed for native USB port only
 
+    delay(2000);
+
+    Serial.println("Begin LED BLINKER");
+    pinMode(LED_BUILTIN, OUTPUT);
+
     // check for the presence of the shield:
     if (WiFi.status() == WL_NO_SHIELD) {
         Serial.println("WiFi shield not present");
@@ -29,6 +38,16 @@ void setup() {
     }
 }
 
+void blink(int N) {
+    // blink N times
+
+    for (int i=0; i<N; i++) {
+        digitalWrite(LED_BUILTIN, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        delay(100);
+    }
+}
 
 void loop() {
     // Print WiFi MAC address:
@@ -40,8 +59,11 @@ void loop() {
 
     Serial.println("End of scan");
 
+    // blink 10 times; introduces 10 seconds delay
+    blink(10);
+
     // delay next scan
-    delay(10000);
+    delay(5000);
 }
 
 void printMacAddress() {
